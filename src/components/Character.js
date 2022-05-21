@@ -1,6 +1,6 @@
 // Write your Character component here
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Appearance from './Appearance'
 import Films from './Films'
 
@@ -41,6 +41,11 @@ const StyledTitle = styled.h3`
 const StyledButton = styled.button`
     width: 60%;
     background-color: #7e7863;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
 `
 
 export default function Character(props) {
@@ -57,16 +62,17 @@ export default function Character(props) {
         <StyledCreate>
             <StyledName>{name}</StyledName>
             <p>Gender: {gender}</p>
+
             <StyledAdditional>
                 <StyledShowMore>
-                    <StyledTitle>Films:</StyledTitle>
-                    { !(showFilms) && <StyledButton onClick={() => setShowFilms(true)}>show films</StyledButton> }
+                    <StyledTitle>Films</StyledTitle>
+                    { !(showFilms) && <StyledButton onClick={() => setShowFilms(true)}>show</StyledButton> }
                     {showFilms && <Films films={films} close={close} />}
                 </StyledShowMore>
                 
                 <StyledShowMore>
-                <StyledTitle>Appearance:</StyledTitle>
-                { !(appear) && <StyledButton onClick={() => setAppear(true)}>Appearance</StyledButton> }
+                <StyledTitle>Appearance</StyledTitle>
+                { !(appear) && <StyledButton onClick={() => setAppear(true)}>show</StyledButton> }
                 { appear && <Appearance character={props.character} close={close} /> }
                 </StyledShowMore>
             </StyledAdditional>

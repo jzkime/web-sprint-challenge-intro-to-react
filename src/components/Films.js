@@ -21,6 +21,11 @@ const StyledButton = styled.button`
     width: 60%;
     background-color: #7e7863;
     margin-bottom: 5%;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
 `
 
 const StyledPara = styled.p`
