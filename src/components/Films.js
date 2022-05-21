@@ -1,5 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {keyframes } from 'styled-components'
+
+const kf = keyframes`
+    50%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+`
 
 const StyledFilms = styled.div`
     p:last-of-type {
@@ -16,6 +26,11 @@ const StyledButton = styled.button`
 const StyledPara = styled.p`
     border-bottom: 2px solid #2e557c;
     padding: 5%;
+
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.2);
+    opacity: 0;
+    animation: ${kf} 0.3s ease-in-out forwards;
 `
 
 export default function Films(props) {

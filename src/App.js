@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Character from './components/Character'
+import styled from 'styled-components'
+
+const StyledButtonContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
+`
+
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -10,9 +17,10 @@ const App = () => {
   // sync up with, if any.
 
     const [ characters, setCharacters ] = useState([])
+    const [ page, setPage ] = useState(1)
 
     useEffect(() => {
-      axios.get(`https://swapi.dev/api/people/`)
+      axios.get(`https://swapi.dev/api/people/?page=${page}`)
       .then((res) => {
         setCharacters(res.data)
       }).catch(err => console.error(`There seems to be an Error: ${err}`))
@@ -21,6 +29,10 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+        {/* <StyledButtonContainer>
+          {page > 1 && <button>previous</button> }
+          {page < 8 && <button>next</button> }
+        </StyledButtonContainer> */}
       { characters !== [] ?
       characters.map((character, index ) => <Character character={character} key={index} />)
     :
