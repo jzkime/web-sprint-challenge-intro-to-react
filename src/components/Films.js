@@ -2,11 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledFilms = styled.div`
-    width: 40%; 
-
     p:last-of-type {
         border: none;
     }
+`
+
+const StyledButton = styled.button`
+    width: 60%;
+    background-color: #7e7863;
+    margin-bottom: 5%;
 `
 
 const StyledPara = styled.p`
@@ -14,18 +18,12 @@ const StyledPara = styled.p`
     padding: 5%;
 `
 
-const StyledTitle = styled.h3`
-    padding: 5%;
-    border: 2px solid #2e557c;
-    margin-bottom: 5%;
-`
-
 export default function Films(props) {
     const { films } = props;
 
     return (
         <StyledFilms>
-            <StyledTitle>Films:</StyledTitle>
+            <StyledButton onClick={props.close}>close</StyledButton>
             { films.map((film, index ) => <StyledPara key={index}>{film}</StyledPara>)}
         </StyledFilms>
     )

@@ -14,7 +14,6 @@ const App = () => {
     useEffect(() => {
       axios.get(`https://swapi.dev/api/people/`)
       .then((res) => {
-        console.log(res.data)
         setCharacters(res.data)
       }).catch(err => console.error(`There seems to be an Error: ${err}`))
     }, [])
@@ -22,7 +21,10 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {characters.map((character, index ) => <Character character={character} key={index} />)}
+      { characters !== [] ?
+      characters.map((character, index ) => <Character character={character} key={index} />)
+    :
+    <h2>loading........</h2>}
     </div>
   );
 }
